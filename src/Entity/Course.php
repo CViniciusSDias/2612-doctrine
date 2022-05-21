@@ -33,4 +33,14 @@ class Course
     {
         return $this->students;
     }
+
+    public function addStudent(Student $student): void
+    {
+        if ($this->students->contains($student)) {
+            return;
+        }
+
+        $this->students->add($student);
+        $student->enrollInCourse($this);
+    }
 }
